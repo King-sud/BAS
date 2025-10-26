@@ -6,9 +6,13 @@
   <title>Bhutan Association</title>
   <style>
     /* General Styles */
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
       background-color: #0d8ce1;
       color: #e7e40c;
@@ -18,43 +22,41 @@
     header {
       background: linear-gradient(90deg, #ae5129 50%, #dfc656 50%);
       color: rgb(215, 209, 228);
-      padding: 2rem;
+      padding: 1.5rem 1rem;
       text-align: center;
-      font-family: "Segoe UI", sans-serif;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       position: relative;
       min-height: 150px;
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
     }
     
     .header-content {
       position: relative;
       z-index: 2;
-      max-width: 70%;
+      max-width: 100%;
+      padding: 0 1rem;
     }
     
     .header-logo {
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      max-width: 120px;
+      max-width: 100px;
       height: auto;
       z-index: 3;
+      margin: 1rem auto 0;
     }
     
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 1.8rem;
       font-weight: bold;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
     
     header p {
       margin: 0.5rem 0 0;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-style: italic;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     }
@@ -63,22 +65,30 @@
     nav {
       display: flex;
       justify-content: center;
-      background: hwb(0 99% 1%);
-      gap: 2rem;
+      background: #fdfdfd;
       padding: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     
     nav a {
       color: rgb(76, 86, 112);
       text-decoration: none;
       font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    nav a:hover {
+      background-color: rgba(76, 86, 112, 0.1);
     }
     
     /* Section Styles */
     section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      padding: 1.5rem;
+      max-width: 100%;
+      margin: 0 auto;
     }
     
     .services ul {
@@ -86,17 +96,42 @@
       padding-left: 1.5rem;
     }
     
+    /* Image Gallery Styles */
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    .image-item {
+      flex: 1 1 300px;
+      max-width: 100%;
+      text-align: center;
+    }
+    
+    .image-item img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
     /* Form Styles */
     form {
       display: flex;
       flex-direction: column;
+      max-width: 500px;
+      margin: 0 auto;
     }
     
     form input, form textarea {
-      padding: 0.5rem;
+      padding: 0.75rem;
       margin-bottom: 1rem;
       border: 1px solid #000418;
       border-radius: 4px;
+      font-size: 1rem;
     }
     
     form button {
@@ -106,12 +141,18 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    
+    form button:hover {
+      background: #7a7799;
     }
     
     /* Footer Styles */
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
       background: #5449d4;
       margin-top: 2rem;
       color: white;
@@ -120,9 +161,97 @@
     /* Divider Styles */
     .divider {
       height: 4px;
-      width: 60%;
+      width: 80%;
       background: #999999;
       margin: 2rem auto;
+    }
+    
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: rgb(76, 86, 112);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    
+    /* Responsive Design */
+    @media (min-width: 768px) {
+      /* Tablet and larger screens */
+      header {
+        padding: 2rem;
+        flex-wrap: nowrap;
+      }
+      
+      .header-content {
+        max-width: 70%;
+      }
+      
+      .header-logo {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: 120px;
+        margin: 0;
+      }
+      
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      header p {
+        font-size: 1.2rem;
+      }
+      
+      section {
+        padding: 2rem;
+        max-width: 800px;
+      }
+      
+      nav {
+        gap: 2rem;
+      }
+      
+      .divider {
+        width: 60%;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      /* Mobile-specific styles */
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+      }
+      
+      nav a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+      }
+      
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+      
+      .nav-collapsed {
+        display: none;
+      }
+    }
+    
+    @media (min-width: 1200px) {
+      /* Large desktop screens */
+      section {
+        max-width: 1000px;
+      }
     }
   </style>
 </head>
@@ -134,15 +263,17 @@
     <p>Connect with our roots</p>
   </div>
   
-  <img src="Bhutan-Schweiz Emblem mit Drache.png" alt="Bhutan Association Logo" class="header-logo logo-Left">
-
+  <img src="Bhutan-Schweiz Emblem mit Drache.png" alt="Bhutan Association Logo" class="header-logo">
 </header>
 
-<nav>
-  <a href="#about">About</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="#images">Images</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="#infos">Infos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="#contact">Contact</a>
+<nav id="main-nav">
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+  <div class="nav-links" id="nav-links">
+    <a href="#about">About</a>
+    <a href="#images">Images</a>
+    <a href="#infos">Infos</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
 <section id="about">
@@ -163,21 +294,20 @@
 
 <section id="images" class="services">
   <h2>Images</h2>
-  <ul>
-    <li>
-      <figure>
-        <img src="Herunterladen (1).jpeg" alt="First GA Event" style="width: 200px ; height: auto;"> <img src="Herunterladen (1).jpeg" alt="First GA Event" style="width: 200px ; height: auto;">
-        <figcaption>Our first GA-Event</figcaption>
-      </figure>
-    </li>
-  <li>
-  <figure> 
-    <img src="2025-06-05 17_36_56-.png" alt="Second GA Event" style="width: 200px; height: auto;">
-    <figcaption>Our second GA-Event</figcaption>
-  </figure> 
-</li>
-
-  </ul>
+  <div class="image-gallery">
+    <div class="image-item">
+      <img src="Herunterladen (1).jpeg" alt="First GA Event">
+      <figcaption>Our first GA-Event</figcaption>
+    </div>
+    <div class="image-item">
+      <img src="Herunterladen (1).jpeg" alt="First GA Event">
+      <figcaption>Our first GA-Event</figcaption>
+    </div>
+    <div class="image-item">
+      <img src="2025-06-05 17_36_56-.png" alt="Second GA Event">
+      <figcaption>Our second GA-Event</figcaption>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -212,10 +342,38 @@
 </footer>
 
 <script>
+  // Contact form submission
   document.getElementById("contactForm").addEventListener("submit", function (e) {
     e.preventDefault();
     alert("Thank you for your message! We'll be in touch.");
     this.reset();
+  });
+  
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('nav-collapsed');
+    });
+  }
+  
+  // Close mobile menu when clicking on a link
+  const navItems = document.querySelectorAll('#nav-links a');
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      if (window.innerWidth <= 767) {
+        navLinks.classList.add('nav-collapsed');
+      }
+    });
+  });
+  
+  // Auto-hide mobile menu on window resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 767) {
+      navLinks.classList.remove('nav-collapsed');
+    }
   });
 </script>
 
